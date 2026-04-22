@@ -3,6 +3,10 @@ name: Deploy to Replicate
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'smoke.py'
+      - '.gitignore'
   workflow_dispatch:
 
 jobs:
