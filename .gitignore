@@ -29,3 +29,10 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Local venvs / test artifacts
+.venv*/
+__pycache__/
+*.svg
+*.png
+test_input.png
