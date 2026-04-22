@@ -1,0 +1,31 @@
+build:
+  gpu: true
+  cuda: "12.1"
+  python_version: "3.11"
+  system_packages:
+    - "git"
+    - "curl"
+    - "libcairo2-dev"
+    - "pkg-config"
+    - "libgl1"
+  python_packages:
+    - "torch==2.5.1"
+    - "torchvision==0.20.1"
+    - "transformers==4.49.0"
+    - "tokenizers==0.21.1"
+    - "sentencepiece==0.2.0"
+    - "accelerate"
+    - "pillow"
+    - "numpy<2.0.0"
+    - "huggingface_hub"
+    - "cairosvg"
+    - "svgpathtools==1.6.1"
+    - "beautifulsoup4"
+    - "lxml"
+    - "omegaconf"
+  run:
+    - "pip install --no-build-isolation https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu12torch2.5cxx11abiFALSE-cp311-cp311-linux_x86_64.whl"
+    - "pip install --no-deps git+https://github.com/joanrod/star-vector.git"
+    - "python -c \"from huggingface_hub import snapshot_download; snapshot_download(repo_id='starvector/starvector-8b-im2svg', local_dir='/src/weights', max_workers=8)\""
+
+predict: "predict.py:Predictor"
