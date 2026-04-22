@@ -23,8 +23,8 @@ class Predictor(BasePredictor):
         self,
         image: Path = Input(description="Input image (PNG/JPG) to convert to SVG."),
         max_length: int = Input(
-            description="Maximum total token length for the generated SVG (includes ~578 prompt tokens).",
-            default=4000,
+            description="Maximum total token length for the generated SVG (includes ~578 prompt tokens). Defaults to the model's training ceiling so detailed logos aren't truncated. Generation stops early at EOS for simple images.",
+            default=16000,
             ge=600,
             le=16000,
         ),
